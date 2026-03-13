@@ -1,159 +1,447 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Pod2Book - Convert Podcasts to eBooks</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="description" content="Stop, collaborate and don't listen—Read instead. Convert your podcasts to eBooks using AI. Helping the neurodivergent, deaf, hard of hearing, or people who just like to read." />
-<link rel="stylesheet" href="assets/css/main.css" />
-<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pod2Book - Turn Podcasts into eBooks</title>
+    <meta name="description" content="Transform your favorite podcasts into beautifully formatted eBooks. Perfect for the deaf, hard of hearing, neurodivergent, and anyone who prefers reading.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#ec4899',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="is-preload">
-<div id="wrapper" class="fade-in">
-<!-- Intro -->
-<div id="intro">
-<h1>Pod2Book</h1>
-<p>Stop, collaborate and don't listen—Read instead.<br />
-Easily convert your podcasts to eBooks using AI.</p>
-<ul class="actions">
-<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Learn More</a></li>
-</ul>
-</div>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Pod2Book
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-gray-900 transition">How It Works</a>
+                    <a href="#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+                    <a href="#pricing" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition">
+                        Buy Now - $19.99
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<!-- Header -->
-<header id="header">
-<a href="index.html" class="logo">Pod2Book</a>
-</header>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50 via-white to-pink-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+                    Stop, Collaborate and Don't Listen—Read Instead
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                    Transform your favorite podcasts into beautifully formatted eBooks with AI-powered transcription.
+                    Perfect for the deaf, hard of hearing, neurodivergent, and anyone who prefers reading.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#pricing" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition">
+                        Get Pod2Book - $19.99
+                    </a>
+                    <a href="#how-it-works" class="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold border-2 border-gray-200 hover:border-gray-300 transition">
+                        See How It Works
+                    </a>
+                </div>
+                <p class="mt-6 text-sm text-gray-500">
+                    ✓ One-time purchase &nbsp;&nbsp; ✓ macOS 13.0+ &nbsp;&nbsp; ✓ Lifetime access
+                </p>
+            </div>
+        </div>
+    </section>
 
-<!-- Nav -->
-<nav id="nav">
-<ul class="links">
-<li class="active"><a href="index.html">Home</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#download">Buy Now</a></li>
-</ul>
-</nav>
+    <!-- Social Proof -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-gray-500 mb-6 font-semibold uppercase text-sm tracking-wider">Trusted By</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+                <div class="text-2xl font-bold text-gray-400">ADHD Community</div>
+                <div class="text-2xl font-bold text-gray-400">Deaf & HOH</div>
+                <div class="text-2xl font-bold text-gray-400">Visual Learners</div>
+                <div class="text-2xl font-bold text-gray-400">Students</div>
+            </div>
+        </div>
+    </section>
 
-<!-- Main -->
-<div id="main">
-<!-- Featured Post -->
-<article class="post featured">
-<header class="major">
-<h2>Helping the neurodivergent, deaf, hard of hearing,<br />
-or people who just like to read</h2>
-</header>
-<a href="#" class="image main"><img src="images/pod2book-hero.jpg" alt="Pod2Book Logo" /></a>
-<p>The idea for transcribing podcasts to ebooks came about whilst listening to a podcast that was very scientific, with a lot of details. I wanted to capture what the person was saying and be able to go back and review, highlight, create notes, study, etc.</p>
-<p>Podcast transcripts are nice and all, but difficult to find and organize. Pod2Book gives you a proper eBook with chapters, covers, and all the features you expect—perfect for your library.</p>
-<ul class="actions special">
-<li><a href="#download" class="button large scrolly">Get Pod2Book - $19.99</a></li>
-</ul>
-</article>
+    <!-- Features -->
+    <section id="features" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Everything You Need</h2>
+                <p class="text-xl text-gray-600">Powerful features that make podcast reading effortless</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">95-98% Accuracy</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        State-of-the-art AI transcription captures every word. No more missing important details or struggling with poor auto-generated captions.
+                    </p>
+                </div>
 
-<!-- Features -->
-<section class="posts" id="features">
-<article>
-<header><h2>AI Speech-to-Text</h2></header>
-<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-<p><strong>95-98% accuracy</strong> using state of the art AI. Professional quality transcription that captures every word.</p>
-</article>
-<article>
-<header><h2>Beautiful eBook Format</h2></header>
-<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-<p>Podcast thumbnail becomes the cover. Each episode becomes a chapter. Customizable copyright and about pages.</p>
-</article>
-<article>
-<header><h2>Your Podcasts, Your way</h2></header>
-<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-<p>Paste Apple Podcasts or Spotify URL, select episodes, & boom! Done. Build your personal podcast library.</p>
-</article>
-<article>
-<header><h2>Private & Secure</h2></header>
-<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-<p>Everything runs locally on your Mac. No cloud, & no tracking. Your podcasts stay private.</p>
-</article>
-</section>
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Beautiful eBook Format</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Each episode becomes a chapter. Podcast artwork becomes the cover. Organize and read in your favorite eBook reader.
+                    </p>
+                </div>
 
-<!-- About -->
-<section id="about" style="padding: 3em 5em;">
-<header class="major">
-<h2>About Pod2Book</h2>
-</header>
-<div style="max-width: 900px; margin: 0 auto;">
-<p>The idea for transcribing podcasts to eBooks came about whilst listening to a podcast that was very scientific, with a lot of information & details. I wanted to capture what the person was saying and be able to go back and review, highlight, create notes, study, etc. Then came different podcasts I wanted to do the same thing with.</p>
-<p>I then thought to myself, "Self, this could also be valuable for people that are neurodivergent, or just like to read." I also shared the idea with someone else, and they were like, "Oh yeah that would help people that are deaf or hard of hearing too." I wish I thought of that part myself.</p>
-<p>Podcast transcripts are nice and all, but difficult to find and organize. What I would really like is to have a storefront/library that has all these podcasts-turned-eBooks organized by author that could then be subscribed to on your eBook reader of choice.</p>
-<p>Well, since I don't own the copyright to any of these, I figured—why not make it easy for everyone to create their own libraries? You can use <a href="https://calibre-ebook.com/" target="_blank">Calibre</a> to organize your collection.</p>
-<p style="margin-top: 2em;">Thanks,<br />
-<strong><a href="https://www.linkedin.com/in/benfrancom/" target="_blank">Ben Francom</a></strong></p>
-</div>
-</section>
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">100% Private</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Everything runs locally on your Mac. No cloud. No tracking. No subscription. Your podcasts stay yours.
+                    </p>
+                </div>
 
-<!-- Download -->
-<section id="download" style="padding: 3em 0; text-align: center; background: rgba(0,0,0,0.05);">
-<header class="major">
-<h2>Get Pod2Book</h2>
-<p>For macOS 13.0+</p>
-</header>
-<div class="box" style="max-width: 600px; margin: 0 auto;">
-<h3>$19.99</h3>
-<p><strong>One-time purchase</strong> • Lifetime access • No subscriptions</p>
-<hr />
-<ul style="text-align: left; list-style: none; padding-left: 0;">
-<li>• Pod2Book native macOS app</li>
-<li>• AI-powered transcription</li>
-<li>• Unlimited podcast conversions</li>
-<li>• Email support</li>
-</ul>
-<a href="#" id="buy-button" class="button large primary" style="margin-top: 1.5em;">Buy Now - $19.99</a>
-<p style="margin-top: 2em; color: #999; font-size: 0.9em;">
-Secure checkout • 30-day money back guarantee
-</p>
-</div>
-</section>
-</div>
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Paste & Convert</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Just paste an Apple Podcasts or Spotify URL, select episodes, and hit convert. Your eBook is ready in minutes.
+                    </p>
+                </div>
 
-<!-- Footer -->
-<footer id="footer">
-<section>
-<h3>About</h3>
-<p>Pod2Book transforms podcasts into eBooks, making audio content accessible as text. Whether you're neurodivergent, deaf or hard of hearing, a visual learner, or simply prefer reading—enjoy podcasts your way.</p>
-</section>
-<section>
-<h3>Contact</h3>
-<dl class="alt">
-<dt>Support</dt>
-<dd><a href="mailto:support@pod2book.com">support@pod2book.com</a></dd>
-<dt>Compatibility</dt>
-<dd>macOS 13.0 or later (Intel & Apple Silicon)</dd>
-</dl>
-</section>
-</footer>
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Standard EPUB</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Works with Apple Books, Kindle, Kobo, and any eReader. Highlight, annotate, and search just like any book.
+                    </p>
+                </div>
 
-<!-- Copyright -->
-<div id="copyright">
-<ul><li>&copy; 2026 Pod2Book</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-</div>
-</div>
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Unlimited Conversions</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Convert as many podcasts as you want. No limits, no quotas, no recurring fees. Pay once, use forever.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">3 Simple Steps</h2>
+                <p class="text-xl text-gray-600">From podcast to eBook in minutes</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center text-white text-2xl font-bold">
+                        1
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-2">Paste Podcast URL</h3>
+                        <p class="text-gray-600 text-lg">Copy a link from Apple Podcasts or Spotify and paste it into Pod2Book.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center text-white text-2xl font-bold">
+                        2
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-2">Select Episodes</h3>
+                        <p class="text-gray-600 text-lg">Choose which episodes you want. Pick one, a few, or the entire series.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center text-white text-2xl font-bold">
+                        3
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-2">Read & Enjoy</h3>
+                        <p class="text-gray-600 text-lg">AI transcribes the audio and creates your eBook. Open it in any eReader and start reading!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50 via-white to-pink-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Simple, Fair Pricing</h2>
+                <p class="text-xl text-gray-600">Pay once. Own forever.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
+                <div class="text-center">
+                    <div class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-sm font-semibold mb-6">
+                        BEST VALUE
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-6xl font-bold">$19.99</span>
+                    </div>
+                    <p class="text-gray-600 text-lg mb-8">One-time payment. No subscription.</p>
+                    
+                    <ul class="text-left space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Unlimited podcast conversions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">AI-powered transcription (95-98% accuracy)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Works with Apple Podcasts & Spotify</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">100% private - runs locally on your Mac</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Lifetime access with free updates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Email support</span>
+                        </li>
+                    </ul>
+
+                    <button id="buy-button" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition">
+                        Get Pod2Book Now
+                    </button>
+                    
+                    <p class="mt-6 text-sm text-gray-500">
+                        30-day money-back guarantee • macOS 13.0 or later required
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-6">
+                <details class="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition cursor-pointer">
+                    <summary class="text-lg font-semibold flex justify-between items-center">
+                        <span>How accurate is the transcription?</span>
+                        <svg class="w-5 h-5 group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Pod2Book uses state-of-the-art AI speech recognition with 95-98% accuracy. This is professional-grade transcription that captures nearly every word, including technical terms and proper names.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition cursor-pointer">
+                    <summary class="text-lg font-semibold flex justify-between items-center">
+                        <span>Which podcast platforms are supported?</span>
+                        <svg class="w-5 h-5 group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Pod2Book works with Apple Podcasts and Spotify URLs. Simply paste a link to any podcast on these platforms and Pod2Book will handle the rest.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition cursor-pointer">
+                    <summary class="text-lg font-semibold flex justify-between items-center">
+                        <span>Is my data private?</span>
+                        <svg class="w-5 h-5 group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Absolutely! Everything runs 100% locally on your Mac. No cloud processing, no tracking, no data collection. Your podcasts and eBooks never leave your computer.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition cursor-pointer">
+                    <summary class="text-lg font-semibold flex justify-between items-center">
+                        <span>Can I read the eBooks on my phone or tablet?</span>
+                        <svg class="w-5 h-5 group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Yes! Pod2Book creates standard EPUB files that work with any eReader. Transfer them to your iPhone, iPad, Kindle, Kobo, or any device that reads EPUB files.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition cursor-pointer">
+                    <summary class="text-lg font-semibold flex justify-between items-center">
+                        <span>Is there a limit on how many podcasts I can convert?</span>
+                        <svg class="w-5 h-5 group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        No limits! Convert as many podcasts as you want, whenever you want. One-time payment, unlimited conversions forever.
+                    </p>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition cursor-pointer">
+                    <summary class="text-lg font-semibold flex justify-between items-center">
+                        <span>What if I need help?</span>
+                        <svg class="w-5 h-5 group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Email support@pod2book.com anytime. We typically respond within 24 hours and are here to help you get the most out of Pod2Book.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ready to Turn Podcasts into eBooks?
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Join hundreds of people who prefer reading to listening
+            </p>
+            <button id="cta-button" class="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition">
+                Get Pod2Book for $19.99
+            </button>
+            <p class="mt-6 text-sm opacity-75">
+                30-day money-back guarantee • No subscription required
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Pod2Book</h3>
+                    <p class="text-sm">
+                        Making podcasts accessible to everyone through beautifully formatted eBooks.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Product</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Contact</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:support@pod2book.com" class="hover:text-white transition">support@pod2book.com</a></li>
+                        <li><a href="mailto:waitlist@pod2book.com" class="hover:text-white transition">waitlist@pod2book.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 Pod2Book. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update this with your Lemon Squeezy checkout URL when ready
+        const CHECKOUT_URL = 'https://your-store.lemonsqueezy.com/checkout/buy/product-id';
+
+        document.getElementById('buy-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(CHECKOUT_URL, '_blank');
+        });
+
+        document.getElementById('cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(CHECKOUT_URL, '_blank');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-<script>
-// Update this with your Lemon Squeezy checkout URL when ready
-const CHECKOUT_URL = 'https://your-store.lemonsqueezy.com/checkout/buy/product-id';
-
-document.getElementById('buy-button').addEventListener('click', function(e) {
-e.preventDefault();
-window.open(CHECKOUT_URL, '_blank');
-});
-</script>
