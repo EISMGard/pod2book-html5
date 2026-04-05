@@ -17,7 +17,7 @@ const podcastURLs = {
     "99% Invisible": "https://podcasts.apple.com/us/podcast/99-invisible/id394775318",
     "How I Built This": "https://podcasts.apple.com/us/podcast/how-i-built-this-with-guy-raz/id1150510297",
     "Dateline NBC": "https://podcasts.apple.com/us/podcast/dateline-nbc/id1464919521",
-    "The Bongino Report": "https://podcasts.apple.com/us/podcast/the-dan-bongino-show/id965293227",
+    "The Dan Bongino Show": "https://podcasts.apple.com/us/podcast/the-dan-bongino-show/id965293227",
     "Hidden Brain": "https://podcasts.apple.com/us/podcast/hidden-brain/id1028908750",
     "TED Radio Hour": "https://podcasts.apple.com/us/podcast/ted-radio-hour/id523121474",
     "Deep Questions with Cal Newport": "https://podcasts.apple.com/us/podcast/deep-questions-with-cal-newport/id1515786216",
