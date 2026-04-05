@@ -77,36 +77,89 @@ function showToast(podcastName) {
 }
 
 // Add click handlers to all carousel images
-document.addEventListener('DOMContentLoaded', () => {
-    // Find all images in the carousel
-    const carouselImages = document.querySelectorAll('.animate-scroll img');
-    
-    carouselImages.forEach(img => {
+function attachClickHandlers(container) {
+    container.querySelectorAll('img').forEach(img => {
         const podcastName = img.alt;
         const podcastURL = podcastURLs[podcastName];
-        
-        if (podcastURL) {
-            // Make parent div clickable
-            const parent = img.parentElement;
-            parent.style.cursor = 'pointer';
-            parent.title = `Click to copy ${podcastName} URL`;
-            
-            // Add visual feedback on hover
-            parent.classList.add('hover:ring-4', 'hover:ring-indigo-300', 'hover:ring-opacity-50', 'rounded-lg');
-            
-            parent.addEventListener('click', async (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const success = await copyToClipboard(podcastURL);
-                if (success) {
-                    showToast(podcastName);
-                    // Add quick flash effect
-                    parent.classList.add('ring-4', 'ring-green-400');
-                    setTimeout(() => {
-                        parent.classList.remove('ring-4', 'ring-green-400');
-                    }, 300);
-                }
-            });
-        }
+        if (!podcastURL) return;
+
+        const parent = img.parentElement;
+        parent.style.cursor = 'pointer';
+        parent.title = `Click to copy ${podcastName} URL`;
+        parent.classList.add('hover:ring-4', 'hover:ring-indigo-300', 'hover:ring-opacity-50', 'rounded-lg');
+
+        parent.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const success = await copyToClipboard(podcastURL);
+            if (success) {
+                showToast(podcastName);
+                parent.classList.add('ring-4', 'ring-green-400');
+                setTimeout(() => parent.classList.remove('ring-4', 'ring-green-400'), 300);
+            }
+        });
     });
+}
+
+function initCarousel() {
+    const track = document.querySelector('.animate-scroll');
+    if (!track) return;
+
+    // Keep only the first row, remove any HTML duplicates
+    const rows = Array.from(track.children);
+    rows.slice(1).forEach(r => r.remove());
+
+    const firstRow = rows[0];
+
+    // Clone and append for seamless loop
+    const clone = firstRow.cloneNode(true);
+    track.appendChild(clone);
+
+    // Attach click handlers to both rows
+    attachClickHandlers(firstRow);
+    attachClickHandlers(clone);
+
+    // Wait for images to load so offsetWidth is accurate
+    const allImages = firstRow.querySelectorAll('img');
+    let loaded = 0;
+    const onLoad = () => {
+        loaded++;
+        if (loaded >= allImages.length) startAnimation();
+    };
+    allImages.forEach(img => {
+        if (img.complete) onLoad();
+        else img.addEventListener('load', onLoad);
+    });
+
+    // Fallback: start after 300ms even if images aren't loaded
+    setTimeout(startAnimation, 300);
+
+    function startAnimation() {
+        // Measure exact pixel width of one row (including gap)
+        const gap = 24; // gap-6
+        const scrollWidth = firstRow.offsetWidth + gap;
+
+        // Inject exact-pixel keyframe to avoid -50% miscalculation on mobile
+        let style = document.getElementById('carousel-keyframe');
+        if (!style) {
+            style = document.createElement('style');
+            style.id = 'carousel-keyframe';
+            document.head.appendChild(style);
+        }
+        style.textContent = `
+            @keyframes carousel-scroll {
+                0%   { transform: translateX(0); }
+                100% { transform: translateX(-${scrollWidth}px); }
+            }
+        `;
+
+        // Set speed based on screen width
+        const w = window.innerWidth;
+        const duration = w < 640 ? '6s' : w < 1024 ? '12s' : '40s';
+        track.style.animationDuration = duration;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCarousel();
 });
