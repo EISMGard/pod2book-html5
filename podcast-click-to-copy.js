@@ -27,7 +27,8 @@ const podcastURLs = {
     "The Mel Robbins Podcast": "https://podcasts.apple.com/us/podcast/the-mel-robbins-podcast/id1646609091",
     "Shawn Ryan Show": "https://podcasts.apple.com/us/podcast/shawn-ryan-show/id1492492083",
     "Naval": "https://podcasts.apple.com/us/podcast/naval/id1454097755",
-    "MoneyWise": "https://podcasts.apple.com/us/podcast/moneywise/id1443691144"
+    "MoneyWise": "https://podcasts.apple.com/us/podcast/moneywise/id1443691144",
+    "CASE STUDIES with Casey Baugh": "https://podcasts.apple.com/us/podcast/case-studies/id1551558661"
 };
 
 // Function to copy to clipboard
@@ -155,7 +156,7 @@ function initCarousel() {
 
         // Set speed based on screen width
         const w = window.innerWidth;
-        const duration = w < 640 ? '6s' : w < 1024 ? '12s' : '40s';
+        const duration = w < 640 ? '20s' : w < 1024 ? '28s' : '40s';
         track.style.animationDuration = duration;
     }
 }
