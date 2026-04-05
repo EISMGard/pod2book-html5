@@ -17,7 +17,7 @@ const podcastURLs = {
     "99% Invisible": "https://podcasts.apple.com/us/podcast/99-invisible/id394775318",
     "How I Built This": "https://podcasts.apple.com/us/podcast/how-i-built-this-with-guy-raz/id1150510297",
     "Dateline NBC": "https://podcasts.apple.com/us/podcast/dateline-nbc/id1464919521",
-    "The Bongino Report": "https://podcasts.apple.com/us/podcast/the-dan-bongino-show/id965293227",
+    "The Dan Bongino Show": "https://podcasts.apple.com/us/podcast/the-dan-bongino-show/id965293227",
     "Hidden Brain": "https://podcasts.apple.com/us/podcast/hidden-brain/id1028908750",
     "TED Radio Hour": "https://podcasts.apple.com/us/podcast/ted-radio-hour/id523121474",
     "Deep Questions with Cal Newport": "https://podcasts.apple.com/us/podcast/deep-questions-with-cal-newport/id1515786216",
@@ -27,7 +27,8 @@ const podcastURLs = {
     "The Mel Robbins Podcast": "https://podcasts.apple.com/us/podcast/the-mel-robbins-podcast/id1646609091",
     "Shawn Ryan Show": "https://podcasts.apple.com/us/podcast/shawn-ryan-show/id1492492083",
     "Naval": "https://podcasts.apple.com/us/podcast/naval/id1454097755",
-    "MoneyWise": "https://podcasts.apple.com/us/podcast/moneywise/id1443691144"
+    "MoneyWise": "https://podcasts.apple.com/us/podcast/moneywise/id1443691144",
+    "CASE STUDIES with Casey Baugh": "https://podcasts.apple.com/us/podcast/case-studies/id1551558661"
 };
 
 // Function to copy to clipboard
@@ -155,7 +156,7 @@ function initCarousel() {
 
         // Set speed based on screen width
         const w = window.innerWidth;
-        const duration = w < 640 ? '6s' : w < 1024 ? '12s' : '40s';
+        const duration = w < 640 ? '20s' : w < 1024 ? '28s' : '40s';
         track.style.animationDuration = duration;
     }
 }
