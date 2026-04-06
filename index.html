@@ -285,6 +285,11 @@
             width: max-content;
             will-change: transform;
             animation: carousel-scroll 40s linear infinite;
+            cursor: grab;
+        }
+
+        .animate-scroll:active {
+            cursor: grabbing;
         }
 
         .animate-scroll:hover {
@@ -293,7 +298,7 @@
         </style>
 
         <p class="text-center text-sm text-gray-500 mt-12 max-w-2xl mx-auto">
-            <strong class="text-indigo-600">💡 Click any podcast cover</strong> to copy its Apple Podcasts URL to your clipboard.<br>
+            <strong class="text-indigo-600">💡 Click any podcast cover</strong> to copy its Apple Podcasts URL &mdash; or <strong class="text-indigo-600">drag to browse</strong>.<br>
             These are just examples. Pod2Book works with <strong>any podcast</strong> on Apple Podcasts or Spotify. Your favorite show is waiting to be read.
         </p>
     </section>

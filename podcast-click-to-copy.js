@@ -31,13 +31,11 @@ const podcastURLs = {
     "CASE STUDIES with Casey Baugh": "https://podcasts.apple.com/us/podcast/case-studies/id1551558661"
 };
 
-// Function to copy to clipboard
 async function copyToClipboard(text) {
     try {
         await navigator.clipboard.writeText(text);
         return true;
     } catch (err) {
-        // Fallback for older browsers
         const textArea = document.createElement('textarea');
         textArea.value = text;
         textArea.style.position = 'fixed';
@@ -55,29 +53,22 @@ async function copyToClipboard(text) {
     }
 }
 
-// Function to show toast
 function showToast(podcastName) {
     const toast = document.getElementById('podcast-toast');
     if (!toast) return;
-    
-    const title = toast.querySelector('.toast-title');
-    const message = toast.querySelector('.toast-message');
-    
-    title.textContent = `${podcastName}`;
-    message.textContent = 'Link copied! Ready to paste into Pod2Book';
-    
-    // Show toast
+    toast.querySelector('.toast-title').textContent = podcastName;
+    toast.querySelector('.toast-message').textContent = 'Link copied! Ready to paste into Pod2Book';
     toast.classList.remove('translate-y-32', 'opacity-0');
     toast.classList.add('translate-y-0', 'opacity-100');
-    
-    // Hide after 3.5 seconds
     setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-32', 'opacity-0');
     }, 3500);
 }
 
-// Add click handlers to all carousel images
+// Drag happened flag — set true during drag, suppresses the click event
+let dragHappened = false;
+
 function attachClickHandlers(container) {
     container.querySelectorAll('img').forEach(img => {
         const podcastName = img.alt;
@@ -90,6 +81,7 @@ function attachClickHandlers(container) {
         parent.classList.add('hover:ring-4', 'hover:ring-indigo-300', 'hover:ring-opacity-50', 'rounded-lg');
 
         parent.addEventListener('click', async (e) => {
+            if (dragHappened) return; // swipe — don't copy
             e.preventDefault();
             e.stopPropagation();
             const success = await copyToClipboard(podcastURL);
@@ -111,36 +103,30 @@ function initCarousel() {
     rows.slice(1).forEach(r => r.remove());
 
     const firstRow = rows[0];
-
-    // Clone and append for seamless loop
     const clone = firstRow.cloneNode(true);
     track.appendChild(clone);
 
-    // Attach click handlers to both rows
     attachClickHandlers(firstRow);
     attachClickHandlers(clone);
 
-    // Wait for images to load so offsetWidth is accurate
+    // Allow horizontal drag but let vertical scroll pass through to the page
+    track.style.touchAction = 'pan-y';
+    track.style.userSelect = 'none';
+
     const allImages = firstRow.querySelectorAll('img');
     let loaded = 0;
-    const onLoad = () => {
-        loaded++;
-        if (loaded >= allImages.length) startAnimation();
-    };
-    allImages.forEach(img => {
-        if (img.complete) onLoad();
-        else img.addEventListener('load', onLoad);
-    });
-
-    // Fallback: start after 300ms even if images aren't loaded
+    const onLoad = () => { if (++loaded >= allImages.length) startAnimation(); };
+    allImages.forEach(img => img.complete ? onLoad() : img.addEventListener('load', onLoad));
     setTimeout(startAnimation, 300);
 
-    function startAnimation() {
-        // Measure exact pixel width of one row (including gap)
-        const gap = 24; // gap-6
-        const scrollWidth = firstRow.offsetWidth + gap;
+    // Animation state
+    let scrollWidth = 0;
+    let animDuration = '40s';
 
-        // Inject exact-pixel keyframe to avoid -50% miscalculation on mobile
+    function startAnimation() {
+        const gap = 24;
+        scrollWidth = firstRow.offsetWidth + gap;
+
         let style = document.getElementById('carousel-keyframe');
         if (!style) {
             style = document.createElement('style');
@@ -154,11 +140,72 @@ function initCarousel() {
             }
         `;
 
-        // Set speed based on screen width
         const w = window.innerWidth;
-        const duration = w < 640 ? '20s' : w < 1024 ? '28s' : '40s';
-        track.style.animationDuration = duration;
+        animDuration = w < 640 ? '20s' : w < 1024 ? '28s' : '40s';
+        track.style.animationDuration = animDuration;
     }
+
+    // --- Drag / swipe ---
+
+    let isDragging = false;
+    let pointerStartX = 0;
+    let currentX = 0;
+    let totalDragDist = 0;
+
+    function getComputedX() {
+        return new DOMMatrix(window.getComputedStyle(track).transform).m41;
+    }
+
+    function pauseForDrag() {
+        currentX = getComputedX();
+        animDuration = track.style.animationDuration || animDuration;
+        track.style.animation = 'none';
+        track.style.transform = `translateX(${currentX}px)`;
+        track.style.cursor = 'grabbing';
+    }
+
+    function resumeFromDrag() {
+        // Normalise position into [-scrollWidth, 0] for a seamless loop resume
+        let pos = currentX % scrollWidth;
+        if (pos > 0) pos -= scrollWidth;
+
+        const duration = parseFloat(animDuration);
+        const delay = -(Math.abs(pos) / scrollWidth) * duration;
+
+        track.style.transform = '';
+        track.style.cursor = '';
+        track.style.animation = `carousel-scroll ${animDuration} ${delay}s linear infinite`;
+    }
+
+    track.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        dragHappened = false;
+        totalDragDist = 0;
+        pointerStartX = e.clientX;
+        pauseForDrag();
+        track.setPointerCapture(e.pointerId);
+    });
+
+    track.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const delta = e.clientX - pointerStartX;
+        pointerStartX = e.clientX;
+        totalDragDist += Math.abs(delta);
+        currentX += delta;
+        track.style.transform = `translateX(${currentX}px)`;
+    });
+
+    function endDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        dragHappened = totalDragDist > 5;
+        resumeFromDrag();
+        // Clear dragHappened after click event has had a chance to fire
+        setTimeout(() => { dragHappened = false; }, 50);
+    }
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
