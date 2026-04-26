@@ -46,7 +46,7 @@
                     <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
                     <a href="#how-it-works" class="text-gray-600 hover:text-gray-900 transition">How It Works</a>
                     <a href="#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
-                    <a href="https://pod2book.gumroad.com/l/macos?wanted=true" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition">
+                    <a href="#" onclick="startCheckout(event)" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full hover:shadow-lg transition">
                         Get Pod2Book &mdash; $24.99
                     </a>
                 </div>
@@ -66,7 +66,7 @@
                     Pod2Book converts any podcast to a beautifully formatted eBook in minutes.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://pod2book.gumroad.com/l/macos?wanted=true" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition">
+                    <a href="#" onclick="startCheckout(event)" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition">
                         Get Pod2Book &mdash; $24.99
                     </a>
                     <a href="#how-it-works" class="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold border-2 border-gray-200 hover:border-gray-300 transition">
@@ -600,7 +600,7 @@
                             <span class="text-gray-700"><strong>Email support</strong></span>
                         </li>
                     </ul>
-                    <a href="https://pod2book.gumroad.com/l/macos?wanted=true" target="_blank" rel="noopener noreferrer" class="w-full block bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition text-center">
+                    <a href="#" onclick="startCheckout(event)" class="w-full block bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition text-center">
                         Get Pod2Book — $24.99
                     </a>
                     <div class="mt-5 flex items-center justify-center gap-2 text-sm text-gray-500">
@@ -729,7 +729,7 @@
             <p class="text-xl mb-8 opacity-90">
                 Join the community making podcasts accessible for everyone
             </p>
-            <a href="https://pod2book.gumroad.com/l/macos?wanted=true" target="_blank" rel="noopener noreferrer" class="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition inline-block">
+            <a href="#" onclick="startCheckout(event)" class="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition inline-block">
                 Get Pod2Book — $24.99
             </a>
             <p class="mt-6 text-sm opacity-75">
@@ -771,18 +771,34 @@
     </footer>
 
     <script>
-        // Lemon Squeezy checkout URL
-        const CHECKOUT_URL = 'https://pod2book.lemonsqueezy.com/checkout/buy/85649296-3b37-4301-87aa-2900885cbabb';
+        const CHECKOUT_API = 'https://gixednx1cd.execute-api.us-east-1.amazonaws.com/checkout';
 
-        document.getElementById('buy-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(CHECKOUT_URL, '_blank');
-        });
+        async function startCheckout(e) {
+            if (e) e.preventDefault();
+            const el = e && e.currentTarget;
+            const originalText = el ? el.textContent : '';
+            if (el) { el.textContent = 'Loading…'; el.style.pointerEvents = 'none'; }
+            try {
+                const res = await fetch(CHECKOUT_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({}),
+                });
+                const data = await res.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('No checkout URL returned');
+                }
+            } catch (err) {
+                console.error('Checkout error:', err);
+                if (el) { el.textContent = originalText; el.style.pointerEvents = ''; }
+                alert('Something went wrong starting checkout. Please try again.');
+            }
+        }
 
-        document.getElementById('cta-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(CHECKOUT_URL, '_blank');
-        });
+        document.getElementById('buy-button').addEventListener('click', startCheckout);
+        document.getElementById('cta-button').addEventListener('click', startCheckout);
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
